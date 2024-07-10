@@ -5,15 +5,13 @@ import { StateStoreService } from "../../stores/state.service";
   selector: "app-comp2",
   standalone: true,
   imports: [],
-  template: ` <p>State: {{ state ?? "null" }}</p> `,
+  template: `
+    <p>State: {{ state() ?? "null" }}</p>
+  `,
   styles: ``,
 })
 export class Comp2Component {
   stateStoreService = inject(StateStoreService);
 
   state = this.stateStoreService.getState();
-
-  constructor() {
-    this.stateStoreService.changes.subscribe((v) => (this.state = v));
-  }
 }

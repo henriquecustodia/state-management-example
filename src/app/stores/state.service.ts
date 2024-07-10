@@ -1,4 +1,4 @@
-import { Injectable, signal } from "@angular/core";
+import { Injectable, Signal, signal } from "@angular/core";
 import { toObservable } from "@angular/core/rxjs-interop";
 
 type StateValue = string | null;
@@ -15,11 +15,11 @@ export class StateStoreService {
     if (!v) {
       v = null;
     }
-    
+
     this.#state.set(v);
   }
 
-  getState(): StateValue {
-    return this.#state();
+  getState(): Signal<StateValue> {
+    return this.#state.asReadonly();
   }
 }
