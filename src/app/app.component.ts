@@ -1,17 +1,28 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from "@angular/core";
+import { RouterOutlet } from "@angular/router";
+import { Comp1Component } from "./components/comp1/comp1.component";
+import { Comp2Component } from "./components/comp2/comp2.component";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [Comp1Component, Comp2Component],
   template: `
-    <h1>Welcome to {{title}}!</h1>
-
-    <router-outlet />
+    <div class="container">
+      <app-comp1 />
+    </div>
+    <div class="container">
+      <app-comp2 />
+    </div>
   `,
-  styles: [],
+  styles: [
+    `
+      .container {
+        border: 1px solid red;
+        padding: 16px;
+        margin: 16px 0;
+      }
+    `,
+  ],
 })
-export class AppComponent {
-  title = 'state-management-example';
-}
+export class AppComponent {}
